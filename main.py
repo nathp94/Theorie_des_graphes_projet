@@ -54,9 +54,9 @@ def put_values_in_tab(lignes):
             print(liste_final[y][x],y,x)
             print("valeur de tabe",tabe[x][y])
             print(tab_cout_v1[x])
-            liste_final[int(tabe[x][y])][x]=tab_cout_v1[x]
+            liste_final[int(tabe[x][y])][x]=tab_cout_v1[int(tabe[x][y])-1]
     print("après valeurs et coût mis")
-    afficher_tab(liste_final)
+    return liste_final
 
 
 
@@ -68,6 +68,7 @@ def main():
     for ligne in lignes:
         print(ligne)
     tab = put_values_in_tab(lignes)
+    afficher_tab(tab)
     
     
 
