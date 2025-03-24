@@ -1,4 +1,4 @@
-
+from verification import *
 
 
 def tab(nb_of_lignes): #construction d'un tableau vide ( valeurs 0 )
