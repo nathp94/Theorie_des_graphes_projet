@@ -6,11 +6,31 @@ def tab(nb_of_lignes): #construction d'un tableau vide ( valeurs 0 )
     for x in range(nb_of_lignes):
         Liste_def.append([])
         for y in range(nb_of_lignes):
-            Liste_def[x].append(0)
+            Liste_def[x].append('X')
     return Liste_def
 
 def afficher_tab(tab):  #affichage d'un tableau
+    for i in range(0,len(tab)):
+        if (i==0):
+            print("     a ",end="")
+        elif i==(len(tab)-1):
+            print(" o ",end="")
+        else:
+            if i>=10:
+                print(i,"",end="")
+            else:
+                print("",i,end=" ")
+    print()
     for x in range(len(tab)):
+        if (x==0):
+            print("a  ",end="")
+        elif x==(len(tab)-1):
+            print("o  ",end="")
+        else:
+            if x>=10:
+                print(x,"",end="")
+            else:
+                print(x," ",end="")
         for y in range(len(tab[x])):
             print(" ",tab[x][y], end='')
         print()
@@ -41,21 +61,38 @@ def transform_to_tab(lignes): #enlève les espaces et met le tableau sous la for
 #on ajoute les valeurs avec les coûts dans le tableau final
 def put_values_in_tab(lignes):
     tabe = transform_to_tab(lignes)
-    
+    list_destination = [] #liste qui ont un suivant 
+    list_predecesseur = [] #ceux qui ont un précédent 
     tab_cout_v1 = tab_cout(tabe)
-    liste_final = tab(len(lignes)+1)
-    print("tab vite avant les valeurs")
+    liste_final = tab(len(lignes)+2)
+    #print("tab vite avant les valeurs")
     afficher_tab(liste_final)
     for x in range(len(tabe)):
         print("numéro de lignes",x,"len",len(tabe))
         for y in range(2,len(tabe[x])):
-            print("tabe",len(tabe[x]))
-            print("valeurs pour",y,'taille de tabe[x]',len(tabe))
-            print(liste_final[y][x],y,x)
-            print("valeur de tabe",tabe[x][y])
-            print(tab_cout_v1[x])
-            liste_final[int(tabe[x][y])][x]=tab_cout_v1[int(tabe[x][y])-1]
-    print("après valeurs et coût mis")
+            #print("tabe",len(tabe[x]))
+            #print("valeurs pour",y,'taille de tabe[x]',len(tabe))
+            #print(liste_final[y][x],y,x)
+            #print("valeur de tabe",tabe[x][y])
+            #print(tab_cout_v1[x])
+            liste_final[int(tabe[x][y])][x+1]=tab_cout_v1[int(tabe[x][y])-1]
+            if (x+1) not in list_predecesseur:
+                list_predecesseur.append(x+1)
+            if int(tabe[x][y]) not in list_destination:
+                list_destination.append(int(tabe[x][y]))
+    #print("après valeurs et coût mis")
+    print("list de ceux qui ont un suivant :",list_destination)
+    print("list de ceux qui ont un précédent",list_predecesseur)
+    #afficher_tab(liste_final)
+    for z in range(1,len(liste_final[0])-1):
+        if z not in list_predecesseur:
+            liste_final[0][z]=0
+    for i in range(1,len(liste_final[0])-2):
+        if i not in list_destination:
+            b = len(liste_final)-1
+            #print(i,len(liste_final),b)
+            #print( liste_final[i][b])
+            liste_final[i][b]=tab_cout_v1[i-1]
     return liste_final
 
 
