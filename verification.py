@@ -28,5 +28,13 @@ def verif_circuit(tab):
 
     return False
 
+def verif_arc_neg(tab):
+    for i in tab:
+        for j in i:
+            if j!='X' and int(j)<0:
+                return True
+    return False
+
+
 
 

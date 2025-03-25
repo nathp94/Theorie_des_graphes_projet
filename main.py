@@ -75,7 +75,7 @@ def put_values_in_tab(lignes):
 
     for z in range(1,len(liste_final[0])-1):
         if z not in list_predecesseur:
-            liste_final[0][z]=0
+            liste_final[0][z]='0'
     for i in range(1,len(liste_final[0])-1):
         if i not in list_destination:
             b = len(liste_final)-1
@@ -92,6 +92,8 @@ def main():
     lignes = f.readlines()  # Retourne une liste
     tab = put_values_in_tab(lignes)
     afficher_tab(tab)
+    print(verif_circuit(tab))
+    print(verif_arc_neg(tab))
     #rang_sommet(tab)
     
     
