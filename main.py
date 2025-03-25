@@ -6,7 +6,7 @@ def tab(nb_of_lignes): #construction d'un tableau vide ( valeurs 0 )
     for x in range(nb_of_lignes):
         Liste_def.append([])
         for y in range(nb_of_lignes):
-            Liste_def[x].append('X')
+            Liste_def[x].append('.')
     return Liste_def
 
 def afficher_tab(tab):  #affichage d'un tableau
@@ -92,9 +92,9 @@ def main():
     lignes = f.readlines()  # Retourne une liste
     tab = put_values_in_tab(lignes)
     afficher_tab(tab)
-    print(verif_circuit(tab))
-    print(verif_arc_neg(tab))
-    #rang_sommet(tab)
+    #print(verif_circuit(tab))
+    #print(verif_arc_neg(tab))
+    rang_sommet(tab)
     
     
     
