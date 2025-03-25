@@ -40,7 +40,7 @@ def tab_cout(list):     #doit être transformé au préalable
     liste_cost = []
     for x in range(len(list)): # lignes 
         liste_cost.append(list[x][1])
-    print(liste_cost)
+
     return liste_cost
 
 def afficher_ligne(tab):
@@ -55,7 +55,7 @@ def transform_to_tab(lignes): #enlève les espaces et met le tableau sous la for
     list = []
     for ligne in lignes:
         list.append(ligne.split())
-    print(list)
+
     return list
 
 #on ajoute les valeurs avec les coûts dans le tableau final
@@ -66,15 +66,13 @@ def put_values_in_tab(lignes):
     tab_cout_v1 = tab_cout(tabe)
     liste_final = tab(len(lignes)+2)
     for x in range(len(tabe)):
-        print("numéro de lignes",x,"len",len(tabe))
         for y in range(2,len(tabe[x])):
             liste_final[int(tabe[x][y])][x+1]=tab_cout_v1[int(tabe[x][y])-1]
             if (x+1) not in list_predecesseur:
                 list_predecesseur.append(x+1)
             if int(tabe[x][y]) not in list_destination:
                 list_destination.append(int(tabe[x][y]))
-    print("list de ceux qui ont un suivant :",list_destination)
-    print("list de ceux qui ont un précédent",list_predecesseur)
+
     for z in range(1,len(liste_final[0])-1):
         if z not in list_predecesseur:
             liste_final[0][z]=0
@@ -89,11 +87,9 @@ def put_values_in_tab(lignes):
 
 
 def main():
-    print("test")
+
     f = open('data.txt', 'r')
     lignes = f.readlines()  # Retourne une liste
-    for ligne in lignes:
-        print(ligne)
     tab = put_values_in_tab(lignes)
     afficher_tab(tab)
     #rang_sommet(tab)
