@@ -11,20 +11,14 @@ def jesuisdanstamatrice(list,n):
 def rang_sommet(tab):
     list_de_rang = [] #liste de rang final
     exit = False
-    tab_copie=tab
-    print("tabcopie",tab_copie) #copie de travail, car modification à venir 
-    print("tab",tab)
+    tab_copie=tab.copy()
     while exit!=True:
         list_de_rang_temp=[] #liste de rang qu'on ajoutera à chaque itération à liste de rang
         list_pred_temp = [] #liste de prédécessuer temporaire, par itération
         for x in range(len(tab_copie)):
             for y in range(len(tab_copie)):
-                print(tab_copie[x][y])
                 if tab_copie[x][y] !='.':
-                    print(tab_copie[x][y])
-                    print("ICIIIIIII")
                     list_pred_temp.append(y)
-        print(list_pred_temp)
         for i in range(len(tab_copie)):
             if i not in list_pred_temp:
                 if jesuisdanstamatrice(list_de_rang,i)==False:
@@ -35,4 +29,4 @@ def rang_sommet(tab):
         list_de_rang.append(list_de_rang_temp)
         if list_pred_temp==[]:
             exit=True
-    print(list_de_rang)
+    return list_de_rang

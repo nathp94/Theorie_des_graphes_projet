@@ -94,7 +94,9 @@ def main():
     afficher_tab(tab)
     #print(verif_circuit(tab))
     #print(verif_arc_neg(tab))
-    rang_sommet(tab)
+    
+    print("liste de rang :",rang_sommet(tab))
+    
     
     
     
